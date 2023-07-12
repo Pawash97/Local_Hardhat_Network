@@ -1,90 +1,90 @@
-# Hardhat Boilerplate
+# CREATING A TOKEN ON LOCAL HARDHAT NETWORK
 
-This repository contains a sample project that you can use as the starting point
-for your Ethereum project. It's also a great fit for learning the basics of
-smart contract development.
+In this repository, a smart contract is written to create a token on local hardhat network and interact with the smart contract using remix IDE or any other ethereum IDE. 
 
-This project is intended to be used with the
-[Hardhat Beginners Tutorial](https://hardhat.org/tutorial), but you should be
-able to follow it by yourself by reading the README and exploring its
-`contracts`, `tests`, `scripts` and `frontend` directories.
+This README file provides the steps necessary for deployment of the contract on local hardhat network using remix connect localhost and provides detailed explanation on the basic features of the project.
 
-## Quick start
+## Features
 
-The first things you need to do are cloning this repository and installing its
-dependencies:
+The following features ar provided by the Project:
 
-```sh
-git clone https://github.com/NomicFoundation/hardhat-boilerplate.git
-cd hardhat-boilerplate
+- `Token.sol` contains the source code of the token.
+- Token attributes like `name` , `symbol` and `totalSupply`.
+- `tokenBalance` displayes the balance associated with a certain address.
+- `mintToken` function is used to mint tokens to a address, restricted to be used only by owner.
+- `burnToken` function is used to burn tokens from a address, no restriction on access.
+- `transfer` function is used to transfer tokens from owner to receiver address, no restriction on access.
+- `transferFrom` function is used to transfer tokens from sender(specified by user) to a receiver, no restriction on access.
+
+Only the owner can use `mintToken` function whereas all other functions can be used by other users/addresses.
+
+## Deployment on Local Hardhat Network
+
+Follow these steps to deploy token on local hardhat network using local pc (here i have used VS Code)
+
+1. Clone the repository and install its dependencies:
+
+```
+git clone https://github.com/Pawash97/Metacrafter_ETH_EVAX_Module3.git
+cd Metacrafter_ETH_EVAX_Module3
 npm install
 ```
 
-Once installed, let's run Hardhat's testing network:
+2. Install the `@remix-project/remixd` dependency to connect Remix IDE:
 
-```sh
+```
+npm install -g @remix-project/remixd
+```
+
+3. Run the following command in the terminal to connect Remix IDE to the Hardhat local host:
+
+```
+remixd -s ./ --remix-ide https://remix.ethereum.org
+```
+
+4. Open a new terminal and start Hardhat's testing network:
+
+```
 npx hardhat node
 ```
 
-Then, on a new terminal, go to the repository's root folder and run this to
-deploy your contract:
+5. Open the [Remix](https://remix.ethereum.org/) online IDE in your browser.
 
-```sh
-npx hardhat run scripts/deploy.js --network localhost
-```
+6. Go to File Explorer -> Workspaces -> Connect to locahost and click confirm.
 
-Finally, we can run the frontend with:
+7. Rewrite the `Token.sol` file in the contracts directory with your own token code.
 
-```sh
-cd frontend
-npm install
-npm start
-```
+8. Compile the contract in the Remix IDE.
 
-Open [http://localhost:3000/](http://localhost:3000/) to see your Dapp. You will
-need to have [Coinbase Wallet](https://www.coinbase.com/wallet) or [Metamask](https://metamask.io) installed and listening to
-`localhost 8545`.
+9. In the deploy section of Remix, select the environment as "Dev-Hardhat Provider".
 
-## User Guide
+10. Deploy your contract on the local Hardhat network using the deploy button in Remix.
 
-You can find detailed instructions on using this repository and many tips in [its documentation](https://hardhat.org/tutorial).
+11. Confirm the deployment transaction in Remix.
 
-- [Writing and compiling contracts](https://hardhat.org/tutorial/writing-and-compiling-contracts/)
-- [Setting up the environment](https://hardhat.org/tutorial/setting-up-the-environment/)
-- [Testing Contracts](https://hardhat.org/tutorial/testing-contracts/)
-- [Setting up your wallet](https://hardhat.org/tutorial/boilerplate-project#how-to-use-it)
-- [Hardhat's full documentation](https://hardhat.org/docs/)
+12. Once the contract is deployed, you will see the contract address in the Remix console. Make note of this address for future interactions.
 
-For a complete introduction to Hardhat, refer to [this guide](https://hardhat.org/getting-started/#overview).
+## Interacting with the Contract using Remix with Hardhat Provider
 
-## What's Included?
+-After the contract is deployed, Remix will display the deployed contract instance in the "Deployed Contracts" section.
 
-This repository uses our recommended hardhat setup, by using our [`@nomicfoundation/hardhat-toolbox`](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox). When you use this plugin, you'll be able to:
+-Expand the deployed contract instance to see the available functions and their input fields.
 
-- Deploy and interact with your contracts using [ethers.js](https://docs.ethers.io/v5/) and the [`hardhat-ethers`](https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-ethers) plugin.
-- Test your contracts with [Mocha](https://mochajs.org/), [Chai](https://chaijs.com/) and our own [Hardhat Chai Matchers](https://hardhat.org/hardhat-chai-matchers) plugin.
-- Interact with Hardhat Network with our [Hardhat Network Helpers](https://hardhat.org/hardhat-network-helpers).
-- Verify the source code of your contracts with the [hardhat-etherscan](https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-etherscan) plugin.
-- Get metrics on the gas used by your contracts with the [hardhat-gas-reporter](https://github.com/cgewecke/hardhat-gas-reporter) plugin.
-- Measure your tests coverage with [solidity-coverage](https://github.com/sc-forks/solidity-coverage).
+-You can now interact with the contract by calling its functions and providing the required inputs.
+  
+  -To mint tokens, call the mint function and provide the receiver's address and the desired amount.
+  -To burn tokens, call the burn function and provide the amount to be burned.
+  -To transfer tokens, call the transfer function and provide the receiver's address and the amount to be transferred.
 
-This project also includes [a sample frontend/Dapp](./frontend), which uses [Create React App](https://github.com/facebook/create-react-app).
+After providing the inputs, click on the "Transact" button to execute the function.
 
-## Troubleshooting
+## Authors
 
-- `Invalid nonce` errors: if you are seeing this error on the `npx hardhat node`
-  console, try resetting your Metamask account. This will reset the account's
-  transaction history and also the nonce. Open Metamask, click on your account
-  followed by `Settings > Advanced > Clear activity tab data`.
+Pawash Kumar Singh
+pawash97@gmail.com
 
-## Setting up your editor
+## License
 
-[Hardhat for Visual Studio Code](https://hardhat.org/hardhat-vscode) is the official Hardhat extension that adds advanced support for Solidity to VSCode. If you use Visual Studio Code, give it a try!
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
-## Getting help and updates
-
-If you need help with this project, or with Hardhat in general, please read [this guide](https://hardhat.org/hardhat-runner/docs/guides/getting-help) to learn where and how to get it.
-
-For the latest news about Hardhat, [follow us on Twitter](https://twitter.com/HardhatHQ), and don't forget to star [our GitHub repository](https://github.com/NomicFoundation/hardhat)!
-
-**Happy _building_!**
+## Video Walkthrough
